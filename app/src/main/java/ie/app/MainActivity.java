@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view ->
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+                        .setAction("Action", null).show());
         donateButton = findViewById(R.id.donateButton);
         if (donateButton != null) {
             Log.v("Donate", "Really got the donate button");
