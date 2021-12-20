@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import ie.app.R;
 
-public class MainActivity extends AppCompatActivity {
+public class Donate extends AppCompatActivity {
     private Button donateButton;
     private RadioGroup paymentMethod;
     private ProgressBar progressBar;

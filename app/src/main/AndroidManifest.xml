@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Donation">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.Donate"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Donation.NoActionBar">
