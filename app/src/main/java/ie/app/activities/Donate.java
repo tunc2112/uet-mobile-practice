@@ -1,30 +1,32 @@
 package ie.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
-import android.content.Intent;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import ie.app.R;
+import ie.app.models.Donation;
 
-public class Donate extends AppCompatActivity {
+public class Donate extends Base {
     private Button donateButton;
     private RadioGroup paymentMethod;
     private ProgressBar progressBar;
     private NumberPicker amountPicker;
-    private int totalDonated = 0;
+    private EditText amountText;
+    private TextView amountTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +36,17 @@ public class Donate extends AppCompatActivity {
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view ->
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show());
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+        );
         donateButton = findViewById(R.id.donateButton);
-        if (donateButton != null) {
-            Log.v("Donate", "Really got the donate button");
-        }
         paymentMethod = findViewById(R.id.paymentMethod);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setMax(10000);
         amountPicker = findViewById(R.id.amountPicker);
+        // amountText = findViewById(R.id.paymentAmount);
+        // amountTotal = findViewById(R.id.totalSoFar);
+        // amountTotal.setText("$0");
         amountPicker.setMinValue(0);
         amountPicker.setMaxValue(1000);
     }
@@ -66,12 +69,19 @@ public class Donate extends AppCompatActivity {
     }
 
     public void donateButtonPressed(View view) {
-        int radioId = paymentMethod.getCheckedRadioButtonId();
-        String method = radioId == R.id.PayPal ? "PayPal" : "Direct";
-        int amount = amountPicker.getValue();
-        totalDonated += amount;
-        progressBar.setProgress(totalDonated);
-        Log.v("Donate", "Donate Pressed! with amount " + amount + ", method: " + method);
-        Log.v("Donate", "Current total " + totalDonated);
+        String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ?
+                "PayPal" : "Direct";
+        int donatedAmount = amountPicker.getValue();
+        if (donatedAmount == 0) {
+            String text = amountText.getText().toString();
+            if (!text.equals(""))
+                donatedAmount = Integer.parseInt(text);
+        }
+        if (donatedAmount > 0) {
+            newDonation(new Donation(donatedAmount, method));
+            progressBar.setProgress(totalDonated);
+            String totalDonatedStr = "$" + totalDonated;
+            amountTotal.setText(totalDonatedStr);
+        }
     }
 }

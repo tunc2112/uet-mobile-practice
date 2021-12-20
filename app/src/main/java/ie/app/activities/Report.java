@@ -1,7 +1,5 @@
 package ie.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +9,7 @@ import android.widget.ListView;
 
 import ie.app.R;
 
-public class Report extends AppCompatActivity {
+public class Report extends Base {
     ListView listView;
     static final String[] numbers = new String[] {
         "Amount, Pay method",
@@ -44,7 +42,7 @@ public class Report extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuDonate:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, Donate.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
