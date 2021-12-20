@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.content.Intent;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuReport:
-                Toast toast = Toast.makeText(this, "Report Selected", Toast.LENGTH_SHORT);
-                toast.show();
+                startActivity(new Intent(this, Report.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
