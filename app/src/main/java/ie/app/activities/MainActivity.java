@@ -1,4 +1,4 @@
-package ie.app;
+package ie.app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,6 +16,8 @@ import android.content.Intent;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
+import ie.app.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button donateButton;
