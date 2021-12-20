@@ -44,9 +44,9 @@ public class Donate extends Base {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setMax(10000);
         amountPicker = findViewById(R.id.amountPicker);
-        // amountText = findViewById(R.id.paymentAmount);
-        // amountTotal = findViewById(R.id.totalSoFar);
-        // amountTotal.setText("$0");
+        amountText = findViewById(R.id.paymentAmount);
+        amountTotal = findViewById(R.id.totalSoFar);
+        amountTotal.setText("$0");
         amountPicker.setMinValue(0);
         amountPicker.setMaxValue(1000);
     }
