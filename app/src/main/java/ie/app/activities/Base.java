@@ -34,7 +34,7 @@ public class Base extends AppCompatActivity {
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu){
+    public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         MenuItem report = menu.findItem(R.id.menuReport);
         MenuItem donate = menu.findItem(R.id.menuDonate);
@@ -53,8 +53,8 @@ public class Base extends AppCompatActivity {
                 reset.setEnabled(true);
             }
         } else {
-            report.setVisible(false);
             donate.setVisible(true);
+            report.setVisible(false);
             reset.setVisible(false);
         }
         return true;
