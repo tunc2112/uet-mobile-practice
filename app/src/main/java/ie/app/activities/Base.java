@@ -53,15 +53,15 @@ public class Base extends AppCompatActivity {
         return true;
     }
 
-    public void settings(MenuItem item) {
-        Toast.makeText(this, "Settings Selected", Toast.LENGTH_SHORT).show();
-    }
-
     public void report(MenuItem item) {
-        startActivity (new Intent(this, Report.class));
+        startActivity(new Intent(this, Report.class));
     }
 
     public void donate(MenuItem item) {
-        startActivity (new Intent(this, Donate.class));
+        startActivity(new Intent(this, Donate.class));
+    }
+
+    public void reset(MenuItem item) {
+        totalDonated = 0;
     }
 }
