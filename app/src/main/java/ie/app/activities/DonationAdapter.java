@@ -24,13 +24,16 @@ public class DonationAdapter extends ArrayAdapter<Donation> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.row_donate, parent, false);
         Donation donation = donations.get(position);
         TextView amountView = view.findViewById(R.id.row_amount);
         TextView methodView = view.findViewById(R.id.row_method);
-        amountView.setText("$" + donation.amount);
+        TextView upvotesView = view.findViewById(R.id.row_upvotes);
+        amountView.setText("" + donation.amount);
         methodView.setText(donation.paymenttype);
+        upvotesView.setText("" + donation.upvotes);
+        view.setTag(donation._id); // setting the 'row' id to the id of the donation
         return view;
     }
 
