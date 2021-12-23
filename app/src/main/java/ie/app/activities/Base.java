@@ -17,14 +17,11 @@ public class Base extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         app = (DonationApp) getApplication();
-        app.dbManager.open();
-        app.dbManager.setTotalDonated(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        app.dbManager.close();
     }
 
     @Override
@@ -39,7 +36,7 @@ public class Base extends AppCompatActivity {
         MenuItem report = menu.findItem(R.id.menuReport);
         MenuItem donate = menu.findItem(R.id.menuDonate);
         MenuItem reset = menu.findItem(R.id.menuReset);
-        if (app.dbManager.getAll().isEmpty()) {
+        if (app.donations.isEmpty()) {
             report.setEnabled(false);
             reset.setEnabled(false);
         } else {
@@ -48,7 +45,7 @@ public class Base extends AppCompatActivity {
         }
         if (this instanceof Donate) {
             donate.setVisible(false);
-            if (!app.dbManager.getAll().isEmpty()) {
+            if (!app.donations.isEmpty()) {
                 report.setVisible(true);
                 reset.setEnabled(true);
             }
